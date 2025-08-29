@@ -18,6 +18,7 @@ module.exports = [
       'no-console': 'warn',
       eqeqeq: ['error', 'always'],
       'prefer-const': 'warn',
+      "@typescript-eslint/no-empty-interface": "error"
     },
   },
 ];
