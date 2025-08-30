@@ -1,17 +1,11 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { StatusBar, View } from 'react-native';
-import { useStyles } from 'react-native-unistyles';
+import { View } from 'react-native';
+import { UnistylesRuntime, useStyles } from 'react-native-unistyles';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import './config/unistyles';
 import { stylesheet } from './App.styles';
-import { Button } from 'react-native-paper';
-import { useAppTheme } from './config/ThemeProvider';
+import { Surface, useTheme } from 'react-native-paper';
+import QRCodeStyled from 'react-native-qrcode-styled';
+import { ThemeProps } from './config/themes';
 
 function App() {
   return (
@@ -22,23 +16,42 @@ function App() {
 }
 
 function AppContent() {
+  const theme = useTheme() as ThemeProps;
   const { styles } = useStyles(stylesheet);
-  const { isDark, toggleTheme } = useAppTheme();
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
-      <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-        Press me
-      </Button>
-      <Button 
-        icon="theme-light-dark" 
-        mode="outlined" 
-        onPress={toggleTheme}
-        style={{ marginTop: 16 }}
+      <Surface
+        elevation={4}
+        style={{
+          borderRadius: 8,
+          flex: 1,
+          marginRight: 20,
+          height: '100%',
+          padding: 20,
+        }}
       >
-        Toggle Theme
-      </Button>
+        {'test'}
+      </Surface>
+      <QRCodeStyled
+        data={'qrData'}
+        style={{ backgroundColor: theme.colors.background }}
+        padding={20}
+        pieceScale={1.03}
+        color={theme.colors.typography}
+        logo={{
+          href: require('./assets/112.png'),
+          width: 50,
+          height: 50,
+          opacity: 0.4,
+        }}
+        size={
+          UnistylesRuntime.screen.height -
+          UnistylesRuntime.insets.top -
+          UnistylesRuntime.insets.bottom -
+          40
+        }
+      />
     </View>
   );
 }

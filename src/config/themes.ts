@@ -59,3 +59,5 @@ export const paperDarkTheme = {
     ...darkTheme.colors,
   },
 };
+
+export type ThemeProps = typeof lightTheme | typeof darkTheme;

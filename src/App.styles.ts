@@ -1,9 +1,15 @@
-import { createStyleSheet } from "react-native-unistyles";
+import { createStyleSheet, UnistylesRuntime } from 'react-native-unistyles';
 
-export const stylesheet = createStyleSheet((theme) => ({
-    container: {
-       flex: 1,
-       padding: 16,
-       backgroundColor: theme.colors.background,
-    },
+export const stylesheet = createStyleSheet((theme, runtime) => ({
+  container: {
+    flex: 12,
+    backgroundColor: theme.colors.background,
+    width: '100%',
+    height: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingBlock: 20,
+    paddingLeft: 20,
+  },
 }));
